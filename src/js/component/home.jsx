@@ -1,26 +1,37 @@
-import React from "react";
-
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+import React, { useState, useEffect } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock } from '@fortawesome/free-regular-svg-icons';
 
 //create your first component
 const Home = () => {
-	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
-};
+    const [counter, setCounter] = useState(0);
+
+    useEffect(() => {
+        setInterval(() => {
+            setCounter(previousCounter => previousCounter + 1);
+        }, 1000);
+    }, []);
+
+    const formatDigit = (number, digitPosition) => {
+        const string = number.toString().padStart(6, '0'); 
+        return string[string.length - digitPosition];
+    };
+
+    return (
+        <div className="container">
+            <div className="Counter">
+            <div className="Icon m-4"><FontAwesomeIcon icon={faClock} /></div>
+                <div className="SixthDigit m-4">{formatDigit(counter, 6)}</div>
+                <div className="FifthDigit m-4">{formatDigit(counter, 5)}</div>
+                <div className="FourthDigit m-4">{formatDigit(counter, 4)}</div>
+                <div className="ThirdDigit m-4">{formatDigit(counter, 3)}</div>
+                <div className="SecondtDigit m-4">{formatDigit(counter, 2)}</div>
+                <div className="FirstDigit m-4">{formatDigit(counter, 1)}</div>
+            </div>
+        </div>
+    )
+}	
+
+
 
 export default Home;

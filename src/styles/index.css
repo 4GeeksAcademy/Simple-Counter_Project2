@@ -10,3 +10,21 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+.Counter{
+    display: flex;
+    justify-content: center;
+    font-size: 70px;
+    margin-top: 20px;
+    background-color: rgb(178, 226, 248);
+    width: 670px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+
